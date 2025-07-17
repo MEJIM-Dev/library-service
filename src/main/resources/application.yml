@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: library-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/library_db
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: e9a64b4fa7f77f
+    password: 93d06803ea49c9
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: true
+
+jwt:
+  secret: 8c804c36256e93d041eaa691cfa46e94fa69637edab292f0878f770715619d89687bf5b982e77da2d73246b76ff36bbdb8b26933d5a5993ca144d8532f851a97
+  expirationMs: 86400000
