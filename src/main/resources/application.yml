@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: library-service
@@ -29,3 +30,16 @@ spring:
 jwt:
   secret: 8c804c36256e93d041eaa691cfa46e94fa69637edab292f0878f770715619d89687bf5b982e77da2d73246b76ff36bbdb8b26933d5a5993ca144d8532f851a97
   expirationMs: 86400000
+
+app:
+  defaultUserRole: ${DEFAULT_USER_ROLE:READER}
+  defaultAdminRole: ${DEFAULT_ADMIN_ROLE:LIBRARIAN}
+  defaultAdminUsername: ${DEFAULT_ADMIN_USERNAME:admin@library.com}
+  defaultAdminPassword: ${DEFAULT_ADMIN_PASSWORD:admin123'}
+  defaultRoles: ${DEFAULT_ROLES:LIBRARIAN, READER}
+
+dataSeeder:
+  active: ${DATA_SEEDER_ACTIVE:true}
+
+server:
+  port: 8081
