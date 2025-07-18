@@ -26,7 +26,7 @@ public class LoanScheduler {
 
         LocalDate targetDate = LocalDate.now().plusDays(2);
 
-        loanRepository.findByExpectedReturnDateBeforeAndActualReturnDateIsNull(targetDate.plusDays(1))
+        loanRepository.findByExpectedReturnDateBeforeAndActualReturnDateIsNullAndNotified(targetDate.plusDays(1), false)
                 .forEach(loan -> {
                     NotificationMessage message = NotificationMessage.builder()
                             .to(loan.getUser().getEmail())

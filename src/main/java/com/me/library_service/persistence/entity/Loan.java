@@ -25,4 +25,5 @@ public class Loan extends BaseEntity{
     private LocalDate checkoutDate;
     private LocalDate expectedReturnDate;
     private LocalDate actualReturnDate;
+    private boolean notified;
 }

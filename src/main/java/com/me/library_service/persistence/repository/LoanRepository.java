@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface LoanRepository extends JpaRepository<Loan, Long> {
-    List<Loan> findByExpectedReturnDateBeforeAndActualReturnDateIsNull(LocalDate now);
+    List<Loan> findByExpectedReturnDateBeforeAndActualReturnDateIsNullAndNotified(LocalDate now, boolean notified);
+
 }

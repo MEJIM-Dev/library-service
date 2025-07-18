@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .cors(e -> e.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
-                        .requestMatchers("/books/**", "/loans/**").hasRole(ADMIN_ROLE)
+                        .requestMatchers("/books/**", "/loans/**").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

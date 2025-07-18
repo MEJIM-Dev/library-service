@@ -53,6 +53,7 @@ public class LoanServiceImpl implements LoanService {
                     .user(user)
                     .checkoutDate(LocalDate.now())
                     .expectedReturnDate(LocalDate.now().plusDays(10))
+                    .notified(false)
                     .build();
 
             Loan saved = loanRepository.save(loan);
