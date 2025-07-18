@@ -3,6 +3,7 @@ package com.me.library_service.controller;
 import com.me.library_service.model.request.AuthRequest;
 import com.me.library_service.model.response.AuthResponse;
 import com.me.library_service.service.AuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<?> register(@Valid @RequestBody AuthRequest authRequest) {
         log.debug("[+] AuthController:register with request dto: {}", authRequest);
         AuthResponse authResponse =  authService.register(authRequest);
         log.debug("[+] AuthController:register with response: {}", authResponse);
@@ -28,7 +29,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<?> login(@Valid @RequestBody AuthRequest authRequest) {
         log.debug("[+] AuthController:login with request dto: {}", authRequest);
         AuthResponse authResponse = authService.login(authRequest);
         log.debug("[+] AuthController:login with response: {}", authResponse);

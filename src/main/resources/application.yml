@@ -37,6 +37,10 @@ app:
   defaultAdminUsername: ${DEFAULT_ADMIN_USERNAME:admin@library.com}
   defaultAdminPassword: ${DEFAULT_ADMIN_PASSWORD:admin123'}
   defaultRoles: ${DEFAULT_ROLES:LIBRARIAN, READER}
+  queue:
+    exchange: 'notification.queue'
+  loan:
+    cron: '0 0 9 * * *'
 
 dataSeeder:
   active: ${DATA_SEEDER_ACTIVE:true}

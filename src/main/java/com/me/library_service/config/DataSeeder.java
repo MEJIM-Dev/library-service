@@ -2,10 +2,13 @@ package com.me.library_service.config;
 
 import com.me.library_service.persistence.entity.Role;
 import com.me.library_service.persistence.entity.User;
+import com.me.library_service.persistence.entity.UserRole;
 import com.me.library_service.persistence.repository.RoleRepository;
 import com.me.library_service.persistence.repository.UserRepository;
+import com.me.library_service.persistence.repository.UserRoleRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.antlr.v4.runtime.misc.LogManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -35,6 +38,7 @@ public class DataSeeder {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserRoleRepository userRoleRepository;
 
     @PostConstruct
     public void seed() {
@@ -60,10 +64,15 @@ public class DataSeeder {
             User admin = User.builder()
                     .email(adminEmail)
                     .password(passwordEncoder.encode(adminPassword))
-                    .roles(Set.of(librarianRole))
                     .build();
-            userRepository.save(admin);
+            admin = userRepository.save(admin);
 
+            UserRole userRole = UserRole.builder()
+                    .user(admin)
+                    .role(librarianRole)
+                    .build();
+
+            userRoleRepository.save(userRole);
         }
     }
 

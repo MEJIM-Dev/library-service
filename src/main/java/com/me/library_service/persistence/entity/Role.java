@@ -5,31 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.Instant;
 
-@Entity(name = "role")
+@Entity(name = "roles")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Role {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+@SuperBuilder
+public class Role extends BaseEntity{
 
     @Column(name = "name", unique = true, nullable = false)
     private String name;
-
-    @Column(name = "created_at")
-    @CreationTimestamp
-    private Instant createdAt;
-
-    @Column(name = "updated_at")
-    @LastModifiedDate
-    private Instant updatedAt;
 
 }

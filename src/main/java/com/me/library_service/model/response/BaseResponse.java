@@ -5,14 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.util.Set;
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class AuthResponse {
+public class BaseResponse {
 
-    private String accessToken;
+    private Long id;
+    private Instant createdAt;
+    private Instant updatedAt;
 
 }

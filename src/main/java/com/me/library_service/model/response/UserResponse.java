@@ -5,14 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.util.Set;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @SuperBuilder
-public class AuthResponse {
+public class UserResponse extends BookResponse{
 
-    private String accessToken;
-
+    private String email;
+    private String profilePhotoUrl;
 }
