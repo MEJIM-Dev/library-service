@@ -27,6 +27,10 @@ spring:
           starttls:
             enable: true
 
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
 jwt:
   secret: 8c804c36256e93d041eaa691cfa46e94fa69637edab292f0878f770715619d89687bf5b982e77da2d73246b76ff36bbdb8b26933d5a5993ca144d8532f851a97
   expirationMs: 86400000
@@ -46,4 +50,4 @@ dataSeeder:
   active: ${DATA_SEEDER_ACTIVE:true}
 
 server:
-  port: 8081
+  port: 8080
