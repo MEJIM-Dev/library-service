@@ -56,12 +56,12 @@ public class JwtFilter extends OncePerRequestFilter {
             boolean validJwt = jwtUtil.validateJwt(bearerToken, user);
 
             if(validJwt) {
-                List<UserRole> roles = userRoleRepository.findAllByUser(user);
-
-                Set<SimpleGrantedAuthority> grantedAuthorities = roles.stream().map(role -> {
-                    return new SimpleGrantedAuthority("ROLE_"+role.getRole().getName());
-                }).collect(Collectors.toSet());
-                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getEmail(),bearerToken, grantedAuthorities);
+                List<UserRole> userRoles = userRoleRepository.findAllByUser(user);
+                Set<SimpleGrantedAuthority> grantedAuthorities = userRoles.stream()
+                        .map(userRole -> new SimpleGrantedAuthority("ROLE_"+userRole.getRole().getName().toUpperCase()))
+                        .collect(Collectors.toSet());
+                System.out.println(grantedAuthorities);
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getEmail(),null, grantedAuthorities);
                 authenticationToken.setDetails(request);
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
